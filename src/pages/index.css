@@ -1,0 +1,81 @@
+#container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+}
+
+#title {
+    color: white;
+    font-family: 'Rowdies', cursive;
+    font-size: 130px;
+
+    flex-basis: 40%;
+    position: relative;
+    margin-left: 120px;
+} 
+
+#lunar {
+    color: #F9CBFF;
+}
+
+#date-section {
+    color: white;
+    font-family: 'Rowdies', cursive;
+    font-size: 30px;
+
+    position: relative;
+    flex-basis: 50%;
+}
+
+#date-section > button {
+    font-family: 'Rowdies', cursive;
+    font-size: 30px;
+    border: 0px;
+    padding: 10px 25px 15px 25px;
+    border-radius: 100px;
+    background-color: #F9CBFF;
+    cursor: pointer;
+}
+
+#date-section >button:hover {
+    background-color: #FFF9C6;
+}
+
+#date-containter {
+
+}
+
+#date-selector {
+    display:flex;
+}
+
+#date-selector > span {
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+select {
+    background-color: transparent;
+    color:#F9CBFF;
+    font-family: 'Rowdies', cursive;
+    font-size: 25px;
+    width: 230px;
+    height: 70px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 3px solid;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+option {
+}
+
