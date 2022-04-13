@@ -5,11 +5,13 @@ const Home = () =>  {
     return (
         <> 
             <div id="container">
-                <div id="title">
-                    When is <br />
-                    my <span id="lunar">lunar</span> <br/>
-                    birthday <br />
-                    in 2022?
+                <div id="title-container">
+                    <div id="title">
+                        When is <br />
+                        my <span id="lunar">lunar</span> <br/>
+                        birthday <br />
+                        in 2022?
+                    </div>
                 </div>
                 <div id ="date-section">
                     <form id="date-containter">

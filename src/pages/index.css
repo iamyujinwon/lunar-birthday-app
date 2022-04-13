@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 10%;
+    padding-left: 120px;
+    padding-right: 120px;
 }
 
 #title {
@@ -12,7 +14,6 @@
 
     flex-basis: 40%;
     position: relative;
-    margin-left: 120px;
 } 
 
 #lunar {
@@ -38,6 +39,7 @@
     cursor: pointer;
     position: absolute;
     margin-top: 20px;
+    width: 730px;
 }
 
 #date-section >button:hover {
