@@ -36,14 +36,12 @@
     border-radius: 100px;
     background-color: #F9CBFF;
     cursor: pointer;
+    position: absolute;
+    margin-top: 20px;
 }
 
 #date-section >button:hover {
     background-color: #FFF9C6;
-}
-
-#date-containter {
-
 }
 
 #date-selector {
@@ -61,6 +59,8 @@ select {
     color:#F9CBFF;
     font-family: 'Rowdies', cursive;
     font-size: 25px;
+    text-align: left;
+    padding-left: 20px;
     width: 230px;
     height: 70px;
     appearance: none;
@@ -69,13 +69,12 @@ select {
     border: 3px solid;
     border-radius: 10px;
     cursor: pointer;
-    text-align: center;
 }
 
 select::-ms-expand {
     display: none;
 }
 
-option {
+form {
+    position: relative;
 }
-

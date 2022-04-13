@@ -6,14 +6,14 @@ const Home = () =>  {
         <> 
             <div id="container">
                 <div id="title">
-                    When is 
+                    When is <br />
                     my <span id="lunar">lunar</span> <br/>
                     birthday <br />
                     in 2022?
                 </div>
                 <div id ="date-section">
                     <form id="date-containter">
-                        <div>Enter my birthday</div> 
+                        <div>Enter my birthday 🎂</div> 
                         <div id="date-selector">
                             <span>  
                                 <select name="year" id="year">
