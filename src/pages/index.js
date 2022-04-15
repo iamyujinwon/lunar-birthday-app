@@ -27,16 +27,23 @@ const Home = () =>  {
     const [year, setYear] = React.useState('YEAR');
     const [month, setMonth] = React.useState('MONTH');
     const [day, setDay] = React.useState('DAY');
+
+    const birthday = {year, month, day};
+
     const handleSubmit = e => {
         e.preventDefault();
 
-        const birthday = {
+        const date = {
             year: year,
             month: month,
             day: day
         };
 
-        const json = JSON.stringify(birthday);
+        birthday.year = date.year;
+        birthday.month = date.month;
+        birthday.day = date.day;
+
+        const json = JSON.stringify(date);
         console.clear();
         console.log(json);
     }
@@ -52,7 +59,7 @@ const Home = () =>  {
                         in {currentYear}?
                     </div>
                 </div>
-                <div id ="date-section">
+                {/* <div id ="date-section">
                     <form id="date-containter" onSubmit={handleSubmit}>
                         <div>Enter the Solar birthday 🎂</div> 
                         <div id="date-selector">
@@ -82,6 +89,19 @@ const Home = () =>  {
                             Find my lunar birthday
                         </button>
                     </form>
+                </div> */}
+
+                <div id="result-container">
+                    <div id="result-section">
+                        <div>My lunar birthday is <span id="solar-birthday">{birthday.year}/{birthday.month}/{birthday.day}</span></div>
+                        <div>This year, my lunar birthday is</div>
+                        <div className="date-result">2022/06/18</div>
+                        <div>Next year, my lunar birthday is</div>
+                        <div className="date-result">2023/06/05</div>
+                    </div>
+                    <button id="google-calendar">
+                        Add the date in Google Calendar
+                    </button>
                 </div>
             </div>
         </>

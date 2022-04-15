@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 10%;
-    padding-left: 120px;
+    padding-left: 150px;
     padding-right: 120px;
 }
 
@@ -79,4 +79,51 @@ select::-ms-expand {
 
 form {
     position: relative;
+}
+
+
+/* for the result part */
+
+#result-container {
+    color: white;
+    font-family: 'Rowdies', cursive;
+    font-size: 30px;
+    position: relative;
+    flex-basis: 50%;
+}
+
+#result-section {
+    text-align: center;
+    font-size: 40px;
+    width: 730px;
+    background-color: rgba(78, 78, 78, 0.5);
+    padding: 40px 0px;
+    border-radius: 50px;
+    line-height: 80px;
+    margin-bottom: 20px;
+}
+
+#solar-birthday {
+    color:#F9CBFF;
+}
+
+.date-result {
+    color:#FFF9C6;
+}
+
+#google-calendar {
+    background-color: #C6FFE4;
+    font-family: 'Rowdies', cursive;
+    font-size: 30px;
+    border: 0px;
+    padding: 10px 25px 15px 25px;
+    border-radius: 100px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 20px;
+    width: 730px;
+}
+
+#google-calendar:hover {
+    background-color: #FFF9C6;
 }
