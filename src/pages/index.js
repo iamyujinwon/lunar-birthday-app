@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
-import { fromSolarDate } from 'lunar-date-calculator';
+import {fromSolarDate} from 'lunar-date-calculator';
 
 const currentYear = new Date().getUTCFullYear();
 
@@ -44,7 +44,7 @@ const Home = () =>  {
         e.preventDefault();
 
         const solarToCurrentLunar = fromSolarDate(inputYear, inputMonth, inputDay);
-        const solarToNextLunar = fromSolarDate(currentYear + 1, inputMonth, inputDay);
+        const solarToNextLunar = fromSolarDate(inputYear, inputMonth, inputDay, currentYear + 1);
 
         setConvertedCurrentYear(solarToCurrentLunar.year);
         setConvertedCurrentMonth(solarToCurrentLunar.month);
@@ -68,12 +68,11 @@ const Home = () =>  {
                 <div id="title-container">
                     <div id="title">
                         When is <br />
-                        my <span id="lunar">lunar</span> <br/>
-                        birthday <br />
-                        in {currentYear}?
+                        my next<br />
+                        <span id="lunar">lunar</span> <br/>
+                        birthday?
                     </div>
                 </div>
-
 
                 {calculated ? 
                     <div id="result-container">
@@ -84,91 +83,49 @@ const Home = () =>  {
                             <div>Next year, my lunar birthday is</div>
                             <div className="date-result">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
                         </div>
+                        <button id="go-back" onClick={() => window.location.reload()}>
+                            Find another birthday
+                        </button>
                         <button id="google-calendar">
                             Add the date in Google Calendar
                         </button>
                     </div>
                     : 
                     <div id ="date-section">
-                    <form id="date-containter" onSubmit={handleSubmit}>
-                        <div>Enter the Solar birthday 🎂</div> 
-                        <div id="date-selector">
-                            <span>  
-                                <select onChange={e=>(setInputYear(e.target.value))}>
-                                    <option value={0} default>YEAR</option>
-                                    {years.map(year => {
-                                        return (<option key={year.value} value={year.value}>{year.text}</option>);
-                                    })}
-                                </select>
-                            </span>   
-                            <span>
-                                <select onChange={e=>(setInputMonth(e.target.value))}>
-                                    <option value={0} default>MONTH</option>
-                                    {months.map(month => {
-                                        return (<option key={month.value} value={month.value}>{month.text}</option>);
-                                    })}
-                                </select>
-                            </span> 
-                            <span>
-                                <select onChange={e=>(setInputDay(e.target.value))}>
-                                    <option value={0} default>DAY</option>
-                                    {days.map(day => {
-                                        return (<option key={day.value} value={day.value}>{day.text}</option>);
-                                    })}
-                                </select>
-                            </span> 
-                        </div>
-                        <button type="submit" disabled={submitDisabled()}>
-                            Find my lunar birthday
-                        </button>
-                    </form>
-                </div> 
+                        <form id="date-containter" onSubmit={handleSubmit}>
+                            <div>Enter my Solar birthday 🎂</div> 
+                            <div id="date-selector">
+                                <span>  
+                                    <select onChange={e=>(setInputYear(e.target.value))}>
+                                        <option value={0} default>YEAR</option>
+                                        {years.map(year => {
+                                            return (<option key={year.value} value={year.value}>{year.text}</option>);
+                                        })}
+                                    </select>
+                                </span>   
+                                <span>
+                                    <select onChange={e=>(setInputMonth(e.target.value))}>
+                                        <option value={0} default>MONTH</option>
+                                        {months.map(month => {
+                                            return (<option key={month.value} value={month.value}>{month.text}</option>);
+                                        })}
+                                    </select>
+                                </span> 
+                                <span>
+                                    <select onChange={e=>(setInputDay(e.target.value))}>
+                                        <option value={0} default>DAY</option>
+                                        {days.map(day => {
+                                            return (<option key={day.value} value={day.value}>{day.text}</option>);
+                                        })}
+                                    </select>
+                                </span> 
+                            </div>
+                            <button id="submit-button" type="submit" disabled={submitDisabled()}>
+                                Find my lunar birthday
+                            </button>
+                        </form>
+                    </div> 
                 }
-
-                {/* <div id ="date-section">
-                    <form id="date-containter" onSubmit={handleSubmit}>
-                        <div>Enter the Solar birthday 🎂</div> 
-                        <div id="date-selector">
-                            <span>  
-                                <select value={year} onChange={e=>(setYear(e.target.value))}>
-                                    {years.map(year => {
-                                        return (<option key={year.value} value={year.value}>{year.text}</option>);
-                                    })}
-                                </select>
-                            </span>   
-                            <span>
-                                <select onChange={e=>(setMonth(e.target.value))}>
-                                    {months.map(month => {
-                                        return (<option key={month.value} value={month.value}>{month.text}</option>);
-                                    })}
-                                </select>
-                            </span> 
-                            <span>
-                                <select onChange={e=>(setDay(e.target.value))}>
-                                    {days.map(day => {
-                                        return (<option key={day.value} value={day.value}>{day.text}</option>);
-                                    })}
-                                </select>
-                            </span> 
-                        </div>
-                        <button type="submit">
-                            Find my lunar birthday
-                        </button>
-                    </form>
-                </div> */}
-
-                {/* <div id="result-container">
-                    <div id="result-section">
-                        <div>My lunar birthday is <span id="solar-birthday">{birthday.year}/{birthday.month}/{birthday.day}</span></div>
-                        <div>This year, my lunar birthday is</div>
-                        <div className="date-result">2022/06/18</div>
-                        <div>Next year, my lunar birthday is</div>
-                        <div className="date-result">2023/06/05</div>
-                    </div>
-                    <button id="google-calendar">
-                        Add the date in Google Calendar
-                    </button>
-                </div> */}
             </div>
         </>
     );
