@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
-import lunaDateCalculator from 'lunar-date-calculator';
+import { fromSolarDate } from 'lunar-date-calculator';
 
 const currentYear = new Date().getUTCFullYear();
 
@@ -25,41 +25,41 @@ for (let i = 1; i < 32; i++) {
 }
 
 const Home = () =>  {
-    const [year, setYear] = useState(0);
-    const [month, setMonth] = useState(0);
-    const [day, setDay] = useState(0);
+    const [inputYear, setInputYear] = useState(0);
+    const [inputMonth, setInputMonth] = useState(0);
+    const [inputDay, setInputDay] = useState(0);
 
-    const [lunarBirthday, setLunarBirthday] = useState();
+    const [convertedCurrentYear, setConvertedCurrentYear] = useState();
+    const [convertedCurrentMonth, setConvertedCurrentMonth] = useState();
+    const [convertedCurrentDay, setConvertedCurrentDay] = useState();    
 
-    const birthday = {year, month, day};
+    const [convertedNextYear, setConvertedNextYear] = useState();
+    const [convertedNextMonth, setConvertedNextMonth] = useState();
+    const [convertedNextDay, setConvertedNextDay] = useState();  
+    
+    
+    const [calculated, setCalculated] = useState(false); 
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        const date = {
-            year: year,
-            month: month,
-            day: day
-        };
+        const solarToCurrentLunar = fromSolarDate(inputYear, inputMonth, inputDay);
+        const solarToNextLunar = fromSolarDate(currentYear + 1, inputMonth, inputDay);
 
-        birthday.year = date.year;
-        birthday.month = date.month;
-        birthday.day = date.day;
+        setConvertedCurrentYear(solarToCurrentLunar.year);
+        setConvertedCurrentMonth(solarToCurrentLunar.month);
+        setConvertedCurrentDay(solarToCurrentLunar.day);
 
-        const json = JSON.stringify(date);
-        console.clear();
-        console.log(json);
+        setConvertedNextYear(solarToNextLunar.year);
+        setConvertedNextMonth(solarToNextLunar.month);
+        setConvertedNextDay(solarToNextLunar.day);
+
+
+        setCalculated(true);
     }
 
     function submitDisabled() {
-        console.log(birthday.year)
-        console.log(birthday.month)
-        console.log(birthday.day)
-        return birthday.year == 0 || birthday.month == 0 || birthday.day == 0
-    }
-
-    function resultRender() {
-        return false;
+        return inputYear == 0 || inputMonth == 0 || inputDay == 0;
     }
 
     return (
@@ -75,14 +75,14 @@ const Home = () =>  {
                 </div>
 
 
-                {resultRender() == true? 
+                {calculated ? 
                     <div id="result-container">
                         <div id="result-section">
-                            <div>My solar birthday is <span id="solar-birthday">{birthday.year}/{birthday.month}/{birthday.day}</span></div>
+                            <div>My solar birthday is <span id="solar-birthday">{inputYear}/{inputMonth}/{inputDay}</span></div>
                             <div>This year, my lunar birthday is</div>
-                            <div className="date-result">2022/06/18</div>
+                            <div className="date-result">{convertedCurrentYear}/{convertedCurrentMonth}/{convertedCurrentDay}</div>
                             <div>Next year, my lunar birthday is</div>
-                            <div className="date-result">2023/06/05</div>
+                            <div className="date-result">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
                         </div>
                         <button id="google-calendar">
                             Add the date in Google Calendar
@@ -94,7 +94,7 @@ const Home = () =>  {
                         <div>Enter the Solar birthday 🎂</div> 
                         <div id="date-selector">
                             <span>  
-                                <select value={year} onChange={e=>(setYear(e.target.value))}>
+                                <select onChange={e=>(setInputYear(e.target.value))}>
                                     <option value={0} default>YEAR</option>
                                     {years.map(year => {
                                         return (<option key={year.value} value={year.value}>{year.text}</option>);
@@ -102,7 +102,7 @@ const Home = () =>  {
                                 </select>
                             </span>   
                             <span>
-                                <select onChange={e=>(setMonth(e.target.value))}>
+                                <select onChange={e=>(setInputMonth(e.target.value))}>
                                     <option value={0} default>MONTH</option>
                                     {months.map(month => {
                                         return (<option key={month.value} value={month.value}>{month.text}</option>);
@@ -110,7 +110,7 @@ const Home = () =>  {
                                 </select>
                             </span> 
                             <span>
-                                <select onChange={e=>(setDay(e.target.value))}>
+                                <select onChange={e=>(setInputDay(e.target.value))}>
                                     <option value={0} default>DAY</option>
                                     {days.map(day => {
                                         return (<option key={day.value} value={day.value}>{day.text}</option>);
@@ -123,7 +123,6 @@ const Home = () =>  {
                         </button>
                     </form>
                 </div> 
-                
                 }
 
                 {/* <div id ="date-section">
