@@ -46,6 +46,11 @@ button:hover {
     background-color: #FFF9C6;
 }
 
+button:disabled {
+    background-color: #F9CBFF;
+    cursor: not-allowed;
+}
+
 #date-selector {
     display:flex;
 }
