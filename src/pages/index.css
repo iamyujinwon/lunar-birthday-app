@@ -1,3 +1,4 @@
+/*
 #container {
     display: flex;
     justify-content: space-between;
@@ -87,7 +88,7 @@ form {
 }
 
 
-/* for the result part */
+
 
 #result-container {
     color: white;
@@ -146,3 +147,4 @@ form {
 #google-calendar:hover {
     background-color: #FFF9C6;
 }
+*/

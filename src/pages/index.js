@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './index.css';
-import ReactDOM from 'react-dom';
 import {fromSolarDate} from 'lunar-date-calculator';
 
 const currentYear = new Date().getUTCFullYear();
@@ -36,8 +35,7 @@ const Home = () =>  {
     const [convertedNextYear, setConvertedNextYear] = useState();
     const [convertedNextMonth, setConvertedNextMonth] = useState();
     const [convertedNextDay, setConvertedNextDay] = useState();  
-    
-    
+        
     const [calculated, setCalculated] = useState(false); 
 
     const handleSubmit = e => {
@@ -54,7 +52,6 @@ const Home = () =>  {
         setConvertedNextMonth(solarToNextLunar.month);
         setConvertedNextDay(solarToNextLunar.day);
 
-
         setCalculated(true);
     }
 
@@ -64,13 +61,13 @@ const Home = () =>  {
 
     return (
         <> 
-            <div id="container">
-                <div id="title-container">
-                    <div id="title">
-                        When is <br />
-                        my next<br />
-                        <span id="lunar">lunar</span> <br/>
-                        birthday?
+            <div class="flex items-center font-Rowdies font-normal w-screen h-screen">
+                <div class="text-white leading-title w-1/2 pl-36">
+                    <div class="text-title">
+                        <div>When is</div>
+                        <div>my next</div>
+                        <div><span class="text-lunar">lunar</span></div>
+                        <div>birthday?</div>
                     </div>
                 </div>
 
@@ -91,12 +88,12 @@ const Home = () =>  {
                         </button>
                     </div>
                     : 
-                    <div id ="date-section">
-                        <form id="date-containter" onSubmit={handleSubmit}>
-                            <div>Enter my Solar birthday 🎂</div> 
-                            <div id="date-selector">
+                    <div class="w-1/2 pl-16">
+                        <form onSubmit={handleSubmit}>
+                            <div class="text-white text-3xl mb-3">Enter my Solar birthday 🎂</div> 
+                            <div class="text-2xl flex space-x-5">
                                 <span>  
-                                    <select onChange={e=>(setInputYear(e.target.value))}>
+                                    <select class="w-52 text-center py-3 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputYear(e.target.value))}>
                                         <option value={0} default>YEAR</option>
                                         {years.map(year => {
                                             return (<option key={year.value} value={year.value}>{year.text}</option>);
@@ -104,7 +101,7 @@ const Home = () =>  {
                                     </select>
                                 </span>   
                                 <span>
-                                    <select onChange={e=>(setInputMonth(e.target.value))}>
+                                    <select class="w-52 text-center py-3 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputMonth(e.target.value))}>
                                         <option value={0} default>MONTH</option>
                                         {months.map(month => {
                                             return (<option key={month.value} value={month.value}>{month.text}</option>);
@@ -112,7 +109,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                                 <span>
-                                    <select onChange={e=>(setInputDay(e.target.value))}>
+                                    <select class="w-52 text-center py-3 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputDay(e.target.value))}>
                                         <option value={0} default>DAY</option>
                                         {days.map(day => {
                                             return (<option key={day.value} value={day.value}>{day.text}</option>);
@@ -120,7 +117,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                             </div>
-                            <button id="submit-button" type="submit" disabled={submitDisabled()}>
+                            <button class="w-[41.5rem] py-2.5 mt-8 text-3xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" type="submit" disabled={submitDisabled()}>
                                 Find my lunar birthday
                             </button>
                         </form>
