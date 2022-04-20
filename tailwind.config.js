@@ -17,6 +17,7 @@ module.exports = {
       '6xl': '4rem',
       '7xl': '5rem',
       'title': '9.5rem',
+      'result': '2.5rem',
     },
     fontFamily: {
       'Rowdies': 'Rowdies',
@@ -34,6 +35,9 @@ module.exports = {
       colors: {
         'lunar': '#F9CBFF',
         'disabled': '#806084',
+        'yellow-highlight': '#FFF9C6',
+        'result-background': '#4E4E4E',
+        'green-highlight': '#C6FFE4',
       },
       lineHeight: {
         'title': '1.1',

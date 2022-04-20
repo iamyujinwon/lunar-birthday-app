@@ -72,18 +72,18 @@ const Home = () =>  {
                 </div>
 
                 {calculated ? 
-                    <div id="result-container">
-                        <div id="result-section">
-                            <div>My solar birthday is <span id="solar-birthday">{inputYear}/{inputMonth}/{inputDay}</span></div>
+                    <div class="w-1/2 pl-16">
+                        <div class="w-[41.5rem] py-12 text-white text-result text-center mb-4 space-y-5 bg-result-background/50 rounded-3xl">
+                            <div>My solar birthday is <span class="text-lunar">{inputYear}/{inputMonth}/{inputDay}</span></div>
                             <div>This year, my lunar birthday is</div>
-                            <div className="date-result">{convertedCurrentYear}/{convertedCurrentMonth}/{convertedCurrentDay}</div>
+                            <div class="text-yellow-highlight">{convertedCurrentYear}/{convertedCurrentMonth}/{convertedCurrentDay}</div>
                             <div>Next year, my lunar birthday is</div>
-                            <div className="date-result">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
+                            <div class="text-yellow-highlight">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
                         </div>
-                        <button id="go-back" onClick={() => window.location.reload()}>
+                        <button class="w-[41.5rem] mt-7 py-2.5 text-3xl bg-lunar rounded-full cursor-pointer" onClick={() => window.location.reload()}>
                             Find another birthday
                         </button>
-                        <button id="google-calendar">
+                        <button class="w-[41.5rem] mt-7 py-2.5 text-3xl bg-green-highlight rounded-full cursor-pointer">
                             Add the date in Google Calendar
                         </button>
                     </div>
