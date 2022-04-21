@@ -68,35 +68,36 @@ const Home = () =>  {
 
     return (
         <> 
-            <div class="w-screen h-screen grid grid-cols-1 gap-7 content-center font-Rowdies">
-                <div class="">
-                    {/* <div class="text-white text-4xl font-Rowdies">
+            <div class="font-Rowdies w-screen h-screen grid grid-cols-1 gap-7 content-center lg:flex items-center">
+                <div class="lg:pl-36">
+                    <div class="hidden lg:block text-title text-white leading-title">
                         <div>When is</div>
                         <div>my next</div>
                         <div><span class="text-lunar">lunar</span></div>
                         <div>birthday?</div>
-                    </div> */}
+                    </div>
 
-                    <div class="text-white text-4xl text-center leading-10">
+                    <div class="text-white text-4xl text-center leading-10 lg:hidden">
+                        <div>🎂</div>
                         <div>When is my next</div>
                         <div><span class="text-lunar">lunar</span> birthday?</div>
                     </div>
                 </div>
 
                 {calculated ? 
-                    <div class="text-center">
-                        <div class="block mr-auto ml-auto w-[21rem] text-white text-xl font-light py-4 bg-result-background/50 rounded-3xl">
+                    <div class="w-screen text-center">
+                        <div class="block mr-auto ml-auto w-[21rem] text-white text-xl font-light py-7 bg-result-background/50 rounded-2xl lg:text-result lg:w-[40rem]">
                             <div class="">My solar birthday is <span class="text-lunar">{inputYear}/{inputMonth}/{inputDay}</span></div>
                             <div>This year, my lunar birthday is</div>
                             <div class="text-yellow-highlight">{convertedCurrentYear}/{convertedCurrentMonth}/{convertedCurrentDay}</div>
                             <div>Next year, my lunar birthday is</div>
                             <div class="text-yellow-highlight">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
                         </div>
-                        <div class="block mr-auto ml-auto w-[20rem] space-y-4 mt-7">
-                            <button class="w-[20rem] py-2 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" onClick={() => window.location.reload()}>
+                        <div class="block text-xl mr-auto ml-auto w-[20rem] space-y-4 mt-7 lg:block mr-auto ml-auto w-[20rem] lg:w-[40rem] text-2xl space-y-6">
+                            <button class="w-[20rem] py-2 bg-lunar rounded-full cursor-pointer lg:w-[40rem] py-3" onClick={() => window.location.reload()}>
                                 Find another birthday
                             </button>
-                            <button class="w-[20rem] py-2 text-xl bg-green-highlight rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled">
+                            <button class="w-[20rem] py-2 bg-yellow-highlight rounded-full cursor-pointer lg:w-[40rem] py-3">
                                 {/* Add the date in Google Calendar */}
                                 Add in Google Calendar
                             </button>
@@ -104,11 +105,11 @@ const Home = () =>  {
                     </div>
                     : 
                     <div class="w-screen text-center">
-                        <form onSubmit={handleSubmit}>
-                            {/* <div class="text-white ">Enter my Solar birthday 🎂</div>  */}
-                            <div class="text-xl flex flex-col space-y-5">
+                        <form class="lg:space-y-7" onSubmit={handleSubmit}>
+                            <div class="hidden lg:inline text-white text-2xl">Enter my Solar birthday 🎂</div> 
+                            <div class="text-xl flex flex-col space-y-5 lg:text-3xl space-y-6">
                                 <span>  
-                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputYear(e.target.value))}>
+                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputYear(e.target.value))}>
                                         <option value={0} default>YEAR</option>
                                         {years.map(year => {
                                             return (<option key={year.value} value={year.value}>{year.text}</option>);
@@ -116,7 +117,7 @@ const Home = () =>  {
                                     </select>
                                 </span>   
                                 <span>
-                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputMonth(e.target.value))}>
+                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputMonth(e.target.value))}>
                                         <option value={0} default>MONTH</option>
                                         {months.map(month => {
                                             return (<option key={month.value} value={month.value}>{month.text}</option>);
@@ -124,7 +125,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                                 <span>
-                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputDay(e.target.value))}>
+                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputDay(e.target.value))}>
                                         <option value={0} default>DAY</option>
                                         {days.map(day => {
                                             return (<option key={day.value} value={day.value}>{day.text}</option>);
@@ -132,7 +133,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                             </div>
-                            <button class="w-[20rem] py-2 mt-7 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" type="submit" disabled={submitDisabled()}>
+                            <button class="w-[21rem] py-3 mt-7 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled lg:w-[27rem] text-2xl" type="submit" disabled={submitDisabled()}>
                                 Find my lunar birthday
                             </button>
                         </form>
