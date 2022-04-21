@@ -93,10 +93,10 @@ const Home = () =>  {
                             <div class="text-yellow-highlight">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
                         </div>
                         <div class="block mr-auto ml-auto w-[20rem] space-y-4 mt-7">
-                            <button class="w-[20rem] py-1.5 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" onClick={() => window.location.reload()}>
+                            <button class="w-[20rem] py-2 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" onClick={() => window.location.reload()}>
                                 Find another birthday
                             </button>
-                            <button class="w-[20rem] py-1.5 text-xl bg-green-highlight rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled">
+                            <button class="w-[20rem] py-2 text-xl bg-green-highlight rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled">
                                 {/* Add the date in Google Calendar */}
                                 Add in Google Calendar
                             </button>
@@ -108,31 +108,31 @@ const Home = () =>  {
                             {/* <div class="text-white ">Enter my Solar birthday 🎂</div>  */}
                             <div class="text-xl flex flex-col space-y-5">
                                 <span>  
-                                    <select class="w-72 text-center py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputYear(e.target.value))}>
-                                        <option value={0} default>YEAR</option>
+                                    <select class="w-72 py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputYear(e.target.value))}>
+                                        <option class="text-center" value={0} default>YEAR</option>
                                         {years.map(year => {
                                             return (<option key={year.value} value={year.value}>{year.text}</option>);
                                         })}
                                     </select>
                                 </span>   
                                 <span>
-                                    <select class="w-72 text-center py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputMonth(e.target.value))}>
-                                        <option value={0} default>MONTH</option>
+                                    <select class="w-72 py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputMonth(e.target.value))}>
+                                        <option class="text-center" value={0} default>MONTH</option>
                                         {months.map(month => {
                                             return (<option key={month.value} value={month.value}>{month.text}</option>);
                                         })}
                                     </select>
                                 </span> 
                                 <span>
-                                    <select class="w-72 text-center py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputDay(e.target.value))}>
-                                        <option value={0} default>DAY</option>
+                                    <select class="w-72 py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputDay(e.target.value))}>
+                                        <option class="text-center" value={0} default>DAY</option>
                                         {days.map(day => {
                                             return (<option key={day.value} value={day.value}>{day.text}</option>);
                                         })}
                                     </select>
                                 </span> 
                             </div>
-                            <button class="w-[20rem] py-1.5 mt-7 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" type="submit" disabled={submitDisabled()}>
+                            <button class="w-[20rem] py-2 mt-7 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled" type="submit" disabled={submitDisabled()}>
                                 Find my lunar birthday
                             </button>
                         </form>
