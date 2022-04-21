@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './index.css';
 import {fromSolarDate} from 'lunar-date-calculator';
 
 const currentYear = new Date().getUTCFullYear();
@@ -41,22 +40,30 @@ const Home = () =>  {
     const handleSubmit = e => {
         e.preventDefault();
 
-        const solarToCurrentLunar = fromSolarDate(inputYear, inputMonth, inputDay);
-        const solarToNextLunar = fromSolarDate(inputYear, inputMonth, inputDay, currentYear + 1);
-
-        setConvertedCurrentYear(solarToCurrentLunar.year);
-        setConvertedCurrentMonth(solarToCurrentLunar.month);
-        setConvertedCurrentDay(solarToCurrentLunar.day);
-
-        setConvertedNextYear(solarToNextLunar.year);
-        setConvertedNextMonth(solarToNextLunar.month);
-        setConvertedNextDay(solarToNextLunar.day);
-
+        setConvertedCurrent();
+        setConvertedNext();
+        
         setCalculated(true);
     }
 
     function submitDisabled() {
-        return inputYear == 0 || inputMonth == 0 || inputDay == 0;
+        return inputYear === 0 || inputMonth === 0 || inputDay === 0;
+    }
+
+    function setConvertedCurrent() {
+        const solarToCurrentLunar = fromSolarDate(inputYear, inputMonth, inputDay);
+
+        setConvertedCurrentYear(solarToCurrentLunar.year);
+        setConvertedCurrentMonth(solarToCurrentLunar.month);
+        setConvertedCurrentDay(solarToCurrentLunar.day);
+    }
+
+    function setConvertedNext() {
+        const solarToNextLunar = fromSolarDate(inputYear, inputMonth, inputDay, currentYear + 1);
+
+        setConvertedNextYear(solarToNextLunar.year);
+        setConvertedNextMonth(solarToNextLunar.month);
+        setConvertedNextDay(solarToNextLunar.day);
     }
 
     return (
