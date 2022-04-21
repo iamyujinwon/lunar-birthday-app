@@ -4,7 +4,7 @@ import {fromSolarDate} from 'lunar-date-calculator';
 const currentYear = new Date().getUTCFullYear();
 
 const years = [];
-for (let i = currentYear; i > 1899; i--) {
+for (let i = currentYear - 1; i > 1899; i--) {
     years.push({"value": i, "text": i});
 }
 
@@ -30,18 +30,17 @@ const Home = () =>  {
     const [convertedCurrentYear, setConvertedCurrentYear] = useState();
     const [convertedCurrentMonth, setConvertedCurrentMonth] = useState();
     const [convertedCurrentDay, setConvertedCurrentDay] = useState();    
-
-    const [convertedNextYear, setConvertedNextYear] = useState();
-    const [convertedNextMonth, setConvertedNextMonth] = useState();
-    const [convertedNextDay, setConvertedNextDay] = useState();  
         
     const [calculated, setCalculated] = useState(false); 
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        setConvertedCurrent();
-        setConvertedNext();
+        const solarToCurrentLunar = fromSolarDate(inputYear, inputMonth, inputDay);
+
+        setConvertedCurrentYear(solarToCurrentLunar.year);
+        setConvertedCurrentMonth(solarToCurrentLunar.month);
+        setConvertedCurrentDay(solarToCurrentLunar.day);
         
         setCalculated(true);
     }
@@ -50,20 +49,13 @@ const Home = () =>  {
         return inputYear === 0 || inputMonth === 0 || inputDay === 0;
     }
 
-    function setConvertedCurrent() {
-        const solarToCurrentLunar = fromSolarDate(inputYear, inputMonth, inputDay);
-
-        setConvertedCurrentYear(solarToCurrentLunar.year);
-        setConvertedCurrentMonth(solarToCurrentLunar.month);
-        setConvertedCurrentDay(solarToCurrentLunar.day);
-    }
-
-    function setConvertedNext() {
-        const solarToNextLunar = fromSolarDate(inputYear, inputMonth, inputDay, currentYear + 1);
-
-        setConvertedNextYear(solarToNextLunar.year);
-        setConvertedNextMonth(solarToNextLunar.month);
-        setConvertedNextDay(solarToNextLunar.day);
+    function googleCalendarUrl() {
+        let year = String(convertedCurrentYear);
+        let month = String(convertedCurrentMonth).padStart(2, '0');
+        let day = String(convertedCurrentDay).padStart(2, '0');
+        let nextDay = String(convertedCurrentDay + 1).padStart(2, '0');
+        
+        return "http://www.google.com/calendar/event?action=TEMPLATE&text=My+Lunar+Birthday&dates=" + year + month + day + "/" + year + month + nextDay;
     }
 
     return (
@@ -86,21 +78,21 @@ const Home = () =>  {
 
                 {calculated ? 
                     <div class="w-screen text-center">
-                        <div class="block mr-auto ml-auto w-[21rem] text-white text-xl font-light py-7 bg-result-background/50 rounded-2xl lg:text-result lg:w-[40rem]">
-                            <div class="">My solar birthday is <span class="text-lunar">{inputYear}/{inputMonth}/{inputDay}</span></div>
-                            <div>This year, my lunar birthday is</div>
-                            <div class="text-yellow-highlight">{convertedCurrentYear}/{convertedCurrentMonth}/{convertedCurrentDay}</div>
-                            <div>Next year, my lunar birthday is</div>
-                            <div class="text-yellow-highlight">{convertedNextYear}/{convertedNextMonth}/{convertedNextDay}</div>
+                        <div class="block mr-auto ml-auto w-[21rem] text-white text-xl font-light py-7 bg-result-background/50 rounded-2xl lg:text-result text-2xl lg:w-[40rem]">
+                            <div >My solar birthday is </div>
+                            <div class="text-lunar">{inputYear}/{String(inputMonth).padStart(2, '0')}/{String(inputDay).padStart(2, '0')}</div>
+                            <div>My next lunar birthday is</div>
+                            <div class="text-yellow-highlight text-4xl lg:text-6xl">{convertedCurrentYear}/{String(convertedCurrentMonth).padStart(2, '0')}/{String(convertedCurrentDay).padStart(2, '0')}</div>
                         </div>
-                        <div class="block text-xl mr-auto ml-auto w-[20rem] space-y-4 mt-7 lg:block mr-auto ml-auto w-[20rem] lg:w-[40rem] text-2xl space-y-6">
+                        <div class="block text-xl mr-auto ml-auto w-[20rem] space-y-4 mt-7 lg:block mr-auto ml-auto w-[20rem] lg:w-[40rem] text-2xl space-y-3">
                             <button class="w-[20rem] py-2 bg-lunar rounded-full cursor-pointer lg:w-[40rem] py-3" onClick={() => window.location.reload()}>
                                 Find another birthday
                             </button>
-                            <button class="w-[20rem] py-2 bg-yellow-highlight rounded-full cursor-pointer lg:w-[40rem] py-3">
-                                {/* Add the date in Google Calendar */}
-                                Add in Google Calendar
-                            </button>
+                            <div class="w-[20rem] py-2 bg-yellow-highlight rounded-full cursor-pointer lg:w-[40rem] py-3">
+                                <a href={googleCalendarUrl()} target="_blank" rel="noreferrer">
+                                    Add in Google Calendar
+                                </a>
+                            </div>
                         </div>
                     </div>
                     : 
