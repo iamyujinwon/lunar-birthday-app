@@ -106,9 +106,9 @@ const Home = () =>  {
                     <div class="w-screen text-center">
                         <form onSubmit={handleSubmit}>
                             {/* <div class="text-white ">Enter my Solar birthday 🎂</div>  */}
-                            <div class="text-xl flex flex-col space-y-5">
+                            <div class="text-xl">
                                 <span>  
-                                    <select class="w-72 py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputYear(e.target.value))}>
+                                    <select class="w-[20rem] py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputYear(e.target.value))}>
                                         <option class="text-center" value={0} default>YEAR</option>
                                         {years.map(year => {
                                             return (<option key={year.value} value={year.value}>{year.text}</option>);
@@ -116,7 +116,7 @@ const Home = () =>  {
                                     </select>
                                 </span>   
                                 <span>
-                                    <select class="w-72 py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputMonth(e.target.value))}>
+                                    <select class="w-[20rem] py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputMonth(e.target.value))}>
                                         <option class="text-center" value={0} default>MONTH</option>
                                         {months.map(month => {
                                             return (<option key={month.value} value={month.value}>{month.text}</option>);
@@ -124,7 +124,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                                 <span>
-                                    <select class="w-72 py-2 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputDay(e.target.value))}>
+                                    <select class="w-[20rem] py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer" onChange={e=>(setInputDay(e.target.value))}>
                                         <option class="text-center" value={0} default>DAY</option>
                                         {days.map(day => {
                                             return (<option key={day.value} value={day.value}>{day.text}</option>);
