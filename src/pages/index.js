@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {fromSolarDate} from 'lunar-date-calculator';
+import './index.css';
 
 const currentYear = new Date().getUTCFullYear();
 
@@ -65,14 +66,14 @@ const Home = () =>  {
                     <div class="hidden lg:block text-title text-white leading-title">
                         <div>When is</div>
                         <div>my next</div>
-                        <div><span class="text-lunar">lunar</span></div>
+                        <div><span class="lunar">lunar</span></div>
                         <div>birthday?</div>
                     </div>
 
                     <div class="text-white text-4xl text-center leading-10 lg:hidden">
                         <div>🎂</div>
                         <div>When is my next</div>
-                        <div><span class="text-lunar">lunar</span> birthday?</div>
+                        <div ><span class="lunar">lunar</span> birthday?</div>
                     </div>
                 </div>
 
@@ -85,10 +86,10 @@ const Home = () =>  {
                             <div class="text-yellow-highlight text-4xl lg:text-6xl">{convertedCurrentYear}/{String(convertedCurrentMonth).padStart(2, '0')}/{String(convertedCurrentDay).padStart(2, '0')}</div>
                         </div>
                         <div class="block text-xl mr-auto ml-auto w-[20rem] space-y-4 mt-7 lg:block mr-auto ml-auto w-[20rem] lg:w-[40rem] text-2xl space-y-3">
-                            <button class="w-[20rem] py-2 bg-lunar rounded-full cursor-pointer lg:w-[40rem] py-3" onClick={() => window.location.reload()}>
+                            <button class="w-[20rem] py-1.5 bg-lunar rounded-xl cursor-pointer lg:w-[40rem] py-3" onClick={() => window.location.reload()}>
                                 Find another birthday
                             </button>
-                            <div class="w-[20rem] py-2 bg-yellow-highlight rounded-full cursor-pointer lg:w-[40rem] py-3">
+                            <div class="w-[20rem] py-1.5 bg-yellow-highlight rounded-xl cursor-pointer lg:w-[40rem] py-3">
                                 <a href={googleCalendarUrl()} target="_blank" rel="noreferrer">
                                     Add in Google Calendar
                                 </a>
@@ -98,10 +99,11 @@ const Home = () =>  {
                     : 
                     <div class="w-screen text-center">
                         <form class="lg:space-y-7" onSubmit={handleSubmit}>
+                            <div class="text-center text-white text-2xl text-lunar mb-2 lg:hidden">Enter Solar birthday</div>
                             <div class="hidden lg:inline text-white text-2xl">Enter my Solar birthday 🎂</div> 
-                            <div class="text-xl flex flex-col space-y-5 lg:text-3xl space-y-6">
+                            <div class="text-xl flex flex-col space-y-4 lg:text-3xl">
                                 <span>  
-                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputYear(e.target.value))}>
+                                    <select class="block mr-auto ml-auto w-[20rem] py-2.5 text-center bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem]" onChange={e=>(setInputYear(e.target.value))}>
                                         <option value={0} default>YEAR</option>
                                         {years.map(year => {
                                             return (<option key={year.value} value={year.value}>{year.text}</option>);
@@ -109,7 +111,7 @@ const Home = () =>  {
                                     </select>
                                 </span>   
                                 <span>
-                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputMonth(e.target.value))}>
+                                    <select class="block mr-auto ml-auto w-[20rem] py-2.5 text-center bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem]" onChange={e=>(setInputMonth(e.target.value))}>
                                         <option value={0} default>MONTH</option>
                                         {months.map(month => {
                                             return (<option key={month.value} value={month.value}>{month.text}</option>);
@@ -117,7 +119,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                                 <span>
-                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputDay(e.target.value))}>
+                                    <select class="block mr-auto ml-auto w-[20rem] py-2.5 text-center bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem]" onChange={e=>(setInputDay(e.target.value))}>
                                         <option value={0} default>DAY</option>
                                         {days.map(day => {
                                             return (<option key={day.value} value={day.value}>{day.text}</option>);
@@ -125,7 +127,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                             </div>
-                            <button class="w-[21rem] py-3 mt-7 text-xl bg-lunar rounded-full cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled lg:w-[27rem] text-2xl" type="submit" disabled={submitDisabled()}>
+                            <button class="block mr-auto ml-auto text-center w-[20rem] py-2 mt-7 text-xl bg-lunar rounded-xl cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled lg:w-[25rem] py-3 text-2xl" type="submit" disabled={submitDisabled()}>
                                 Find my lunar birthday
                             </button>
                         </form>

@@ -1,0 +1,21 @@
+.lunar {
+    color: transparent;
+    background-image: linear-gradient(to bottom left, #ef536c, #d466bd, #9387ec, #F9CBFF, #6a9beb, #18bfe9, #f39c12);
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: animate 7s linear infinite;
+    background-size: 500%;
+    -webkit-background-size: 500%;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 100%;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
