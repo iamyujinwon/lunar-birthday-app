@@ -103,7 +103,7 @@ const Home = () =>  {
                             <div class="hidden lg:inline text-white text-2xl">Enter my Solar birthday 🎂</div> 
                             <div class="text-xl flex flex-col space-y-4 lg:text-3xl">
                                 <span>  
-                                    <select class="block mr-auto ml-auto w-[20rem] py-2.5 text-center bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem]" onChange={e=>(setInputYear(e.target.value))}>
+                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputYear(e.target.value))}>
                                         <option value={0} default>YEAR</option>
                                         {years.map(year => {
                                             return (<option key={year.value} value={year.value}>{year.text}</option>);
@@ -111,7 +111,7 @@ const Home = () =>  {
                                     </select>
                                 </span>   
                                 <span>
-                                    <select class="block mr-auto ml-auto w-[20rem] py-2.5 text-center bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem]" onChange={e=>(setInputMonth(e.target.value))}>
+                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputMonth(e.target.value))}>
                                         <option value={0} default>MONTH</option>
                                         {months.map(month => {
                                             return (<option key={month.value} value={month.value}>{month.text}</option>);
@@ -119,7 +119,7 @@ const Home = () =>  {
                                     </select>
                                 </span> 
                                 <span>
-                                    <select class="block mr-auto ml-auto w-[20rem] py-2.5 text-center bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem]" onChange={e=>(setInputDay(e.target.value))}>
+                                    <select class="w-[20rem] pl-7 py-2.5 bg-transparent text-lunar border-solid border-2 border-lunar rounded-xl appearance-none cursor-pointer lg:w-[25rem] pl-9 py-3" onChange={e=>(setInputDay(e.target.value))}>
                                         <option value={0} default>DAY</option>
                                         {days.map(day => {
                                             return (<option key={day.value} value={day.value}>{day.text}</option>);
