@@ -61,7 +61,10 @@ const Home = () =>  {
 
     return (
         <> 
-            <div class="font-Rowdies w-screen h-screen grid grid-cols-1 gap-7 content-center lg:flex items-center">
+            <div class="relative font-Rowdies w-screen h-screen grid grid-cols-1 gap-7 content-center lg:flex items-center">
+                <a href="https://github.com/iamyujinwon" class="absolute top-10 right-10 w-[3rem] h-[3rem] bg-green-highlight rounded-full text-center cursor-pointer text-3xl font-light">
+                    i
+                </a>
                 <div class="lg:pl-36">
                     <div class="hidden lg:block text-title text-white leading-title">
                         <div>When is</div>
