@@ -15,7 +15,7 @@ A React app built with Javascript and TailwindCSS hosted on Netlify
 ## What is the purpose of this app?
 
 - In many of `Asian countries` includings Korea and China, people still are using the Lunar calendar to count dates for national holidays such as Lunar New Year and Korean Thanks giving Day.
-- As a close exmaple, my parents and grandparents are still using Lunar calendar so that I often made a mistake to forget to remember their birthdays because the dates are `different every year`. 
+- As a close example, my parents and grandparents are still using Lunar calendar so that I often made a mistake to forget their birthdays because the dates are `different every year`. 
 - Not to forget upcoming birthdays, I made this app to remember and add the date on `Google Calendar`. 
 
 ## What technologies were used?
