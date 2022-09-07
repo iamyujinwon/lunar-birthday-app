@@ -3,6 +3,7 @@
 A React app built with Javascript and TailwindCSS hosted on Netlify
 
 ## Demo of this app:
+![lunar_birthday_app (1)](https://user-images.githubusercontent.com/65494027/188930943-c7410cf5-75b0-4ba3-8aca-b320eb3c9633.gif)
 
 ### or you can check the website: <a href='https://lunarbirthday.netlify.app/'>here</a>
 
